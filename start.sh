@@ -13,7 +13,7 @@ chmod -R ugo=rwx /var/www/html/$SUBFOLDER/tsicons
 chmod -R ugo=rwx /var/www/html/$SUBFOLDER/avatars
 chmod ugo=rwx /var/www/html/$SUBFOLDER/other/dbconfig.php
 # Change the default root of apache
-if "$SUBPATH" = "false" && ! grep -q "/var/www/html/$SUBFOLDER" /etc/apache2/sites-available/000-default.conf ; then
+if ! "$SUBPATH" && ! grep -q "/var/www/html/$SUBFOLDER" /etc/apache2/sites-available/000-default.conf ; then
     sed -i ' s/\<var\/www\/html\>/&\/'$SUBFOLDER'/' /etc/apache2/sites-available/000-default.conf
 fi
 
