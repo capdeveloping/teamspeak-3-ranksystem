@@ -7,7 +7,7 @@ EXPOSE 80/tcp
 
 RUN apt-get update -y \
     && apt upgrade -y \
-    && apt-get install -y libcurl3-dev libzip-dev libssh2-1-dev libonig-dev git \
+    && apt-get install -y libcurl3-dev libzip-dev libssh2-1-dev libonig-dev git rsync \
     && pecl install ssh2-1.2 \
     && docker-php-ext-install curl \
     && docker-php-ext-install zip \
