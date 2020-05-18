@@ -5,7 +5,7 @@ mkdir -p /tmp/gitfolder
 mkdir -p /var/www/html/$SUBFOLDER
 cd /tmp/gitfolder/
 git clone https://github.com/Newcomer1989/TSN-Ranksystem.git .
-cp -ur . /var/www/html/$SUBFOLDER
+rsync -av --exclude dbconfig.php . /var/www/html/$SUBFOLDER
 rm -rf /tmp/gitfolder/
 
 chown -R www-data:www-data /var/www/html/$SUBFOLDER
