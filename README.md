@@ -25,15 +25,6 @@ Add ```-p 8765:80```  to change the Port from 80 to 8765 or whatever you like.
 # webroot
 I changed apaches webroot to /ranksystem.
 
-# link on dockerhub
-
-If you'd like to download the image:
-
-https://hub.docker.com/r/kourgiantakis/docker-teamspeak-ranksystem
-
-# how to get the ip of mariadb?
-docker inspect "RanksystemDatabase" or just use "ranksystemdb.docker.local"
-
 # docker-compose
 
 I created a docker-compose that fits my personal needs.

@@ -2,7 +2,7 @@ image: docker:latest
 
 stages:
   - build
-  - update
+  - push
 
 # This file is a template, and might need editing before it works on your project.
 push to docker hub:
@@ -17,6 +17,19 @@ push to docker hub:
 
   only:
     - master
+
+push to github repo:
+  stage: push
+  image: debian:stable-slim
+  script:
+    - apt update -y && apt install git -y
+    - export UPDATE_GIT_URL="git remote set-url public-repo $GITHUB_URL"
+    - export ADD_GIT_URL="git remote add public-repo $GITHUB_URL"
+    - if [ `git remote | grep public-repo` == "public-repo" ]; then $UPDATE_GIT_URL; else $ADD_GIT_URL; fi
+    - git push public-repo HEAD:master
+  only:
+    - master
+
 
 test build:
   # Official docker image.
