@@ -26,7 +26,7 @@ push to github repo:
     - export UPDATE_GIT_URL="git remote set-url public-repo $GITHUB_URL"
     - export ADD_GIT_URL="git remote add public-repo $GITHUB_URL"
     - if [ `git remote | grep public-repo` == "public-repo" ]; then $UPDATE_GIT_URL; else $ADD_GIT_URL; fi
-    - git push public-repo HEAD:master
+    - git push public-repo HEAD:main
   only:
     - master
 
