@@ -4,7 +4,8 @@
 mkdir -p /tmp/gitfolder
 mkdir -p /var/www/html/$SUBFOLDER
 cd /tmp/gitfolder/
-git clone https://github.com/Newcomer1989/TSN-Ranksystem.git .
+wget https://ts-n.net/downloads/ranksystem_latest.zip
+unzip ranksystem_latest.zip && rm ranksystem_latest.zip
 rsync -av --exclude dbconfig.php . /var/www/html/$SUBFOLDER
 rm -rf /tmp/gitfolder/
 

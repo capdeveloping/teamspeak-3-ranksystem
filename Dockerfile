@@ -1,4 +1,4 @@
-FROM php:7.4.3-apache
+FROM php:8-apache
 
 ENV SUBPATH=true
 ENV SUBFOLDER=ranksystem
@@ -7,8 +7,7 @@ EXPOSE 80/tcp
 
 RUN apt-get update -y \
     && apt upgrade -y \
-    && apt-get install -y libcurl3-dev libzip-dev libssh2-1-dev libonig-dev git rsync \
-    && pecl install ssh2-1.2 \
+    && apt-get install -y libcurl3-dev libzip-dev libssh2-1-dev libonig-dev git rsync unzip wget \
     && docker-php-ext-install curl \
     && docker-php-ext-install zip \
     && docker-php-ext-install pdo \
@@ -18,7 +17,6 @@ RUN apt-get update -y \
     && docker-php-ext-enable zip \
     && docker-php-ext-enable pdo \
     && docker-php-ext-enable pdo_mysql \
-    && docker-php-ext-enable ssh2 \
     && docker-php-ext-enable mbstring
 
 COPY start.sh /etc/start.sh
