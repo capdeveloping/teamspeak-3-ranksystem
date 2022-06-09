@@ -2,12 +2,13 @@ FROM php:8-apache
 
 ENV SUBPATH=true
 ENV SUBFOLDER=ranksystem
+ENV CRONTIMES="*/10 * * * *"
 
 EXPOSE 80/tcp
 
 RUN apt-get update -y \
     && apt upgrade -y \
-    && apt-get install -y libcurl3-dev libzip-dev libssh2-1-dev libonig-dev git rsync unzip wget \
+    && apt-get install -y libcurl3-dev cron libzip-dev libssh2-1-dev libonig-dev git rsync unzip wget \
     && docker-php-ext-install curl \
     && docker-php-ext-install zip \
     && docker-php-ext-install pdo \
