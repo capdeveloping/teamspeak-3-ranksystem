@@ -24,6 +24,4 @@ COPY start.sh /etc/start.sh
 
 RUN chmod +x /etc/start.sh
 
-USER www-data
-
 CMD ["bash", "/etc/start.sh"]

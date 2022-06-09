@@ -22,9 +22,9 @@ chmod ugo=rwx /var/www/html/$SUBFOLDER/other/dbconfig.php
 
 
 if [[ "$SUBPATH" && ! -z "$SUBFOLDER" ]]; then
-    echo "$CRONTIMES www-data php /var/www/html/$SUBFOLDER/worker.php check >/dev/null 2>&1" > /etc/cron.d/ts3-bot
+    echo "$CRONTIMES root /usr/local/bin/php /var/www/html/$SUBFOLDER/worker.php check >/dev/null 2>&1" > /etc/cron.d/ts3-bot
 else
-    echo "$CRONTIMES www-data php /var/www/html/worker.php check >/dev/null 2>&1" > /etc/cron.d/ts3-bot
+    echo "$CRONTIMES root /usr/local/bin/php /var/www/html/worker.php check >/dev/null 2>&1" > /etc/cron.d/ts3-bot
 fi
 
 # Change the default root of apache
@@ -35,6 +35,8 @@ fi
 mkdir /var/www/html/ranksystem/logs/ -p
 chmod 740 /var/www/html/ranksystem/logs/
 chown -R www-data:www-data /var/www/html/ranksystem/logs/
+
+/usr/local/bin/php /var/www/html/$SUBFOLDER/worker.php check
 
 service cron stop
 service cron start
