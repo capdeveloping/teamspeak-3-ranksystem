@@ -8,8 +8,8 @@ I am a beginner. Most of what i wrote happened by "trial and error". Please be a
 
 # docker-compose exmaple
 
+```yaml
 ---
-
 services:
   mysql:
     container_name: mysql
@@ -35,3 +35,4 @@ services:
       - 8088:80
     volumes:
       - /path/to/folder/ranksystem/dbconfig.php:/var/www/html/other/dbconfig.php
+```
