@@ -22,9 +22,9 @@ chmod ugo=rwx /var/www/html/$SUBFOLDER/other/dbconfig.php
 
 
 if [[ "$SUBPATH" && ! -z "$SUBFOLDER" ]]; then
-    echo "$CRONTIMES sudo -u www-data php /var/www/html/$SUBFOLDER/worker.php check >/dev/null 2>&1" > /etc/cron.d/ts3-bot
+    echo "$CRONTIMES www-data php /var/www/html/$SUBFOLDER/worker.php check >/dev/null 2>&1" > /etc/cron.d/ts3-bot
 else
-    echo "$CRONTIMES sudo -u www-data php /var/www/html/worker.php check >/dev/null 2>&1" > /etc/cron.d/ts3-bot
+    echo "$CRONTIMES www-data php /var/www/html/worker.php check >/dev/null 2>&1" > /etc/cron.d/ts3-bot
 fi
 
 # Change the default root of apache
