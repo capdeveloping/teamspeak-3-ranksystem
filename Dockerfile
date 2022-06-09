@@ -22,8 +22,8 @@ RUN apt-get update -y \
 
 COPY start.sh /etc/start.sh
 
-USER www-data
-
 RUN chmod +x /etc/start.sh
+
+USER www-data
 
 CMD ["bash", "/etc/start.sh"]
