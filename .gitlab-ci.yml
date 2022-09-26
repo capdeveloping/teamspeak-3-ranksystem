@@ -12,8 +12,10 @@ push to docker hub:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
     - docker build -t "$CI_REGISTRY_USER/$CI_PROJECT_NAME:latest" -t "$CI_REGISTRY_USER/$CI_PROJECT_NAME:1.$CI_PIPELINE_ID" .
-    - docker push "$CI_REGISTRY_USER/$CI_PROJECT_NAME"
+    - docker image rm "$CI_REGISTRY_USER/$CI_PROJECT_NAME:test"
+    - docker push "$CI_REGISTRY_USER/$CI_PROJECT_NAME" --all-tags
     - docker image rm "$CI_REGISTRY_USER/$CI_PROJECT_NAME:latest"
+    - docker image rm "$CI_REGISTRY_USER/$CI_PROJECT_NAME:1.1"
 
   only:
     - master
