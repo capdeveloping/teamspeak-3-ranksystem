@@ -5,12 +5,12 @@ if [ "$SUBPATH" = false ]; then
 fi
 
 # Take action if $DIR exists. #
-mkdir -p /tmp/gitfolder
 mkdir -p /var/www/html/$SUBFOLDER
+mkdir -p /tmp/gitfolder
 cd /tmp/gitfolder/
-wget https://ts-n.net/downloads/ranksystem_latest.zip
+curl -s https://api.github.com/repos/Newcomer1989/TSN-Ranksystem/releases/latest | grep "zipball_url" | cut -d '"' -f 4 | wget -O ranksystem_latest.zip -i -
 unzip ranksystem_latest.zip && rm ranksystem_latest.zip
-rsync -av --exclude dbconfig.php . /var/www/html/$SUBFOLDER
+find . -maxdepth 1 -mindepth 1 -type d -exec rsync -av --exclude dbconfig.php {}/ /var/www/html/$SUBFOLDER \;
 rm -rf /tmp/gitfolder/
 
 chown -R www-data:www-data /var/www/html/$SUBFOLDER
