@@ -1,4 +1,4 @@
-image: docker:latest
+image: docker:20.10.18
 
 stages:
   - build
@@ -22,7 +22,7 @@ push to docker hub:
 
 push to github repo:
   stage: push
-  image: debian:stable-slim
+  image: debian:stable-20221004-slim
   script:
     - apt update -y && apt install git -y
     - export UPDATE_GIT_URL="git remote set-url public-repo $GITHUB_URL"
@@ -35,7 +35,6 @@ push to github repo:
 
 test build:
   # Official docker image.
-  image: docker:latest
   stage: build
   script:
     - docker build -t "$CI_REGISTRY_USER/$CI_PROJECT_NAME:test" .

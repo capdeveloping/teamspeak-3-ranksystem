@@ -2,16 +2,17 @@ version: '3.1'
 
 services:
   ranksystem:
-    image: kourgiantakis/docker-teamspeak-ranksystem
+    image: capdeveloping/teamspeak-3-ranksystem:1.2
     container_name: teamspeak_ranksystem
     restart: always
+    environment:
+      SUBPATH: true (optional - default value)
+      SUBFOLDER: "ranksystem" (optional - default value)
+      CRONTIMES: "*/10 * * * *" (optional - default value)
     ports:
       - 8088:80
     volumes:
-      - ./dbconfig.php:/var/www/html/ranksystem/other/dbconfig.php
-    networks:
-      teamspeak-network:
-
+      - /path/to/folder/dbconfig.php:/var/www/html/ranksystem/other/dbconfig.php
 networks:
     teamspeak-network:
         driver: bridge

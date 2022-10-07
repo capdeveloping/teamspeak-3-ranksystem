@@ -1,4 +1,4 @@
-FROM php:8-apache
+FROM php:8.1.4-apache
 
 ENV SUBPATH=true
 ENV SUBFOLDER=ranksystem
